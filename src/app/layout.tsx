@@ -1,6 +1,7 @@
 import Header from "./components/Header";
 import "./globals.css";
 import { Lobster } from "@next/font/google";
+import RecoilProvider from "./providers/RecoilProvider";
 
 const lobster = Lobster({ subsets: ["latin"], weight: ["400"] });
 
@@ -18,8 +19,10 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body className="max-w-6xl mx-auto">
-        <Header mainFont={lobster.className} />
-        {children}
+        <RecoilProvider>
+          <Header mainFont={lobster.className} />
+          {children}
+        </RecoilProvider>
       </body>
     </html>
   );

@@ -1,17 +1,38 @@
 import { Lobster } from "@next/font/google";
-import { VscDebugStepInto } from "react-icons/vsc";
+import NewGame from "./components/NewGame";
+import ResetButton from "./components/ResetButton";
+import StartGameButton from "./components/StartGameButton";
 
 const lobster = Lobster({ subsets: ["latin"], weight: ["400"] });
+const stepSentences = [
+  "Définissez le nombres de joueurs",
+  "Lancer la partie",
+  "Ajouter les trajets réussis ou non",
+  "Comptez les wagons",
+  "Définissez les bonus",
+];
 
-const Step = ({ text, color }: { text: string; color: string }) => {
+const Step = ({
+  text,
+
+  index,
+}: {
+  text: string;
+
+  index: number;
+}) => {
   return (
-    <li className="flex items-center text-lg my-2">
-      <div
-        className={`rounded-full h-8 w-8 flex items-center justify-center ${color} `}
-      >
-        <VscDebugStepInto className="text-white" />
+    <li className="flex items-center justify-start">
+      <div className="flex items-center text-lg my-2 h-16 bg-neutral-200 px-4 rounded-xl w-full sm:">
+        <div
+          className={`rounded-full h-8 w-8 flex items-center justify-center `}
+        >
+          <div className="h-7 w-7 rounded-full bg-neutral-300 text-gray-700 flex items-center justify-center text-sm shadow-sm">
+            {index + 1}
+          </div>
+        </div>
+        <p className="ml-4 text-sm sm:text-md">{text}</p>
       </div>
-      <p className="ml-4">{text}</p>
     </li>
   );
 };
@@ -27,25 +48,22 @@ export default function Home() {
         Dorénavant, une solution simple s'offre à vous :{" "}
         <span className={`font-bold ${lobster.className}`}>TCter</span>
       </p>
-      <div className="my-5 text-lg sm:ml-20">
+      <div className="my-5 text-lg sm:mx-20">
         <ul className="">
-          <Step text="Définissez le nombre de joueurs" color="bg-green-500" />
-          <Step
-            text="Ajouter les tickets (ceux réussis comme ceux non réalisés)"
-            color="bg-yellow-500"
-          />
-          <Step text="Ajouter les groupes de wagons" color="bg-red-500" />
+          {stepSentences.map((sentence, index) => (
+            <Step key={index} text={sentence} index={index} />
+          ))}
         </ul>
       </div>
       <p className="text-center text-4xl pt-5">
         <span className={`font-bold ${lobster.className}`}>TCter</span> s'occupe
         du reste !
       </p>
-      <div className="flex items-center justify-center mt-20">
-        <button className="px-3 py-2.5 bg-blue-500 rounded-md shadow-md text-white hover:bg-blue-600 transition-colors duration-200">
-          Commencer une nouvelle partie
-        </button>
+      <div className="flex items-center justify-between mt-20">
+        <StartGameButton />
+        <ResetButton />
       </div>
+      <NewGame />
     </main>
   );
 }

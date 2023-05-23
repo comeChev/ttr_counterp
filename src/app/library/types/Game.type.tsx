@@ -1,28 +1,34 @@
 export type Game = {
   id: number;
-  players: [Player, Player, Player?, Player?, Player?]; //max 5 players
+  players: Player[]; //max 5 players
 };
 
 export type Player = {
   customName?: string;
   name: PlayerName;
-  colorbg: BgColor;
   mainColor: MainColor;
-  rountesPoints: number;
+  wagonsPoints: number;
   rideTicketPoints: number;
   longestRoutePoints: number;
+  wagonsConfig: WagonConfig[];
+  ticketConfig: number[];
 };
 
-type PlayerName = "Red" | "Blue" | "Green" | "Yellow" | "Black";
-type BgColor =
-  | "red-300"
-  | "blue-300"
-  | "green-300"
-  | "yellow-300"
-  | "black-300";
-type MainColor =
-  | "red-600"
-  | "blue-600"
-  | "green-600"
-  | "yellow-600"
-  | "black-600";
+export type WagonConfig = {
+  numberWagons: number;
+  pointsWagon: number;
+  numberWagonMade: number;
+};
+
+type PlayerName =
+  | "Joueur rouge"
+  | "Joueur bleu"
+  | "Joueur vert"
+  | "Joueur jaune"
+  | "Joueur noir";
+type MainColor = "red" | "blue" | "green" | "yellow" | "black";
+
+export type PointValue = {
+  routePoints: number;
+  routeWagons: number;
+};
