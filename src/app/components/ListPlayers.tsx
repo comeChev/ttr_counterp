@@ -95,7 +95,7 @@ export default function ListPlayers() {
         }}
       >
         <div className="flex flex-col items-center justify-center w-14">
-          <BsPlayCircleFill className="text-[45px] group-hover:text-red-600 transition-colors duration-300 border-2" />
+          <BsPlayCircleFill className="text-[45px] group-hover:text-red-600 transition-colors duration-300 border-2 border-transparent" />
           <p className={`text-sm text-gray-500 w-14 pt-1 text-center`}>
             Nouvelle partie
           </p>
