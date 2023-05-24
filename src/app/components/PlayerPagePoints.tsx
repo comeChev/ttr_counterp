@@ -19,6 +19,7 @@ import {
 import { Game, Player, WagonConfig } from "../library/types/Game.type";
 import { useRouter } from "next/navigation";
 import ModalTicketPoints from "./ModalTicketPoints";
+import WagonsCounter from "./WagonsCounter";
 
 export default function PlayerPagePoints() {
   const [currentPlayer, setCurrentPlayer] = useRecoilState(currentPlayerState);
@@ -110,14 +111,14 @@ export default function PlayerPagePoints() {
   }
 
   const getPositiveTickets = () => {
-    const positiveTickets = currentPlayer.ticketConfig.filter(
+    const positiveTickets = currentPlayer.ticketConfig?.filter(
       (ticket) => Number(ticket) > 0
     );
-    return positiveTickets.length === 0
-      ? `0 trajet sur ${currentPlayer.ticketConfig.length} complété`
-      : positiveTickets.length === 1
-      ? `1 trajet sur ${currentPlayer.ticketConfig.length} complété`
-      : `${positiveTickets.length} trajets sur ${currentPlayer.ticketConfig.length} complétés`;
+    return positiveTickets?.length === 0
+      ? `0 trajet sur ${currentPlayer.ticketConfig?.length} complété`
+      : positiveTickets?.length === 1
+      ? `1 trajet sur ${currentPlayer.ticketConfig?.length} complété`
+      : `${positiveTickets?.length} trajets sur ${currentPlayer.ticketConfig?.length} complétés`;
   };
 
   useEffect(() => {
@@ -133,73 +134,7 @@ export default function PlayerPagePoints() {
     <>
       <div className="flex flex-col h-[75vh] flex-1">
         {/* wagonsCounter */}
-        <div className="mt-10">
-          <h2 className="text-xl font-semibold">Points des routes</h2>
-          <h3>Score courant : {currentPlayer.wagonsPoints}</h3>
-          <div
-            className={`${backgroundLight} p-4 border-2 ${borderColor} rounded-lg`}
-          >
-            <div className="text-2xl">
-              {currentPlayer?.wagonsConfig?.map((wagonConfig, index) => (
-                <div className="flex items-center space-x-2 mb-3">
-                  <span className={``}>{wagonConfig.numberWagons}</span>
-                  <div className="flex flex-1">
-                    {Array.from(
-                      Array(wagonConfig.numberWagons),
-                      (routePoint, index) => {
-                        return (
-                          <IoMdTrain key={index} className={`${textIcon}`} />
-                        );
-                      }
-                    )}
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <button
-                      onClick={() =>
-                        retireScore(
-                          wagonConfig.pointsWagon,
-                          index,
-                          wagonConfig.numberWagons
-                        )
-                      }
-                      disabled={wagonConfig.numberWagonMade === 0}
-                      className="disabled:opacity-50"
-                    >
-                      <AiOutlineMinusCircle
-                        className={`${textIcon} text-[30px]`}
-                      />
-                    </button>
-                    <span className="w-5 text-center">
-                      {wagonConfig.numberWagonMade}
-                    </span>
-                    <button
-                      className="disabled:opacity-50"
-                      disabled={
-                        totalWagons === numberWagons ||
-                        totalWagons + wagonConfig.pointsWagon > numberWagons
-                      }
-                      onClick={() =>
-                        addScore(
-                          wagonConfig.pointsWagon,
-                          index,
-                          wagonConfig.numberWagons
-                        )
-                      }
-                    >
-                      <AiOutlinePlusCircle
-                        className={`${textIcon} text-[30px]`}
-                      />
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-            {/* ticketsCounter */}
-            {/* bonusCounter */}
-            {/* Total wagons */}
-            <p>{`Wagons restants : ${numberWagons - totalWagons}`}</p>
-          </div>
-        </div>
+        <WagonsCounter />
 
         {/* ticketsCounter */}
         <div className="mt-10">

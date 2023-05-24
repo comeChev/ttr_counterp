@@ -8,7 +8,6 @@ import {
   routesPoints,
 } from "../library/configGame";
 import { Player } from "../library/types/Game.type";
-import { AiOutlineCloseCircle } from "react-icons/ai";
 import { currentPlayerState, gameState } from "../library/atom/gameState";
 import { useRecoilState } from "recoil";
 
@@ -106,10 +105,12 @@ export default function ModalTicketPoints({
         </button>
       </div>
 
-      <AiOutlineCloseCircle
-        className="absolute top-1 right-1 hover:cursor-pointer text-2xl text-red-500"
+      <span
+        className="cursor-pointer text-lg text-red-500 hover:underline underline-offset-2"
         onClick={() => setIsModalOpen(false)}
-      />
+      >
+        Fermer
+      </span>
     </motion.div>
   );
 }
