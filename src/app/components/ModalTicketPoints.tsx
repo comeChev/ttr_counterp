@@ -71,7 +71,7 @@ export default function ModalTicketPoints({
       initial={{ opacity: 0, top: -20 }}
       animate={{ opacity: 1, top: 10 }}
       exit={{ opacity: 0, top: -20 }}
-      className={`fixed  top-4 ${backgroundExtraLight} text-neutral-700 border-2 ${borderColor} p-4 rounded-lg w-[85%] left-1/2 transform -translate-x-1/2 flex flex-col items-center justify-center px-10`}
+      className={`fixed  top-4 ${backgroundExtraLight} text-neutral-700 border-2 ${borderColor} p-4 rounded-lg w-[85%] left-1/2 transform -translate-x-1/2 flex flex-col items-center justify-center px-10 z-50`}
     >
       <div className="flex flex-wrap w-full sm:w-3/4">
         {routesPoints.map((routePoint, index) => (
