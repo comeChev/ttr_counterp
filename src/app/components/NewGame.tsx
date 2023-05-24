@@ -125,7 +125,8 @@ export default function NewGame() {
 
   useEffect(() => {
     if (window.localStorage?.getItem("game")) {
-      const game: Game = JSON.parse(window.localStorage.getItem("game"));
+      const gameStringified = window.localStorage.getItem("game");
+      const game: Game = gameStringified && JSON.parse(gameStringified);
       setGame(game);
       const players = game.players;
       setGamePlayersDefault(
