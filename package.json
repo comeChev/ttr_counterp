@@ -27,5 +27,8 @@
     "recoil": "^0.7.7",
     "tailwindcss": "3.3.2",
     "typescript": "5.0.4"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.194"
   }
 }

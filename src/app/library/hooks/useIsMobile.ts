@@ -1,6 +1,6 @@
 "use client";
 import { useState, useLayoutEffect } from "react";
-import debounce from "lodash/debounce";
+import debounce from "lodash/debounce.js";
 
 export default function useIsMobile(): boolean {
   const [isMobile, setIsMobile] = useState(false);
