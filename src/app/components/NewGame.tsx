@@ -89,7 +89,7 @@ const AddPlayerButton = ({
       key={name}
       onClick={handleAdd}
       disabled={disabled}
-      className={`${color} px-3 py-1.5 rounded-full text-[10px] text-white sm:text-sm disabled:opacity-20`}
+      className={`${color} w-[150px] py-2 mr-3 mb-2 rounded-full text-[15px] text-white sm:text-sm disabled:opacity-20`}
     >
       {name}
     </button>
@@ -145,7 +145,7 @@ export default function NewGame() {
 
   return (
     <div>
-      <div className="flex space-x-3 my-4">
+      <div className="flex w-full flex-wrap">
         {gamePlayersDefault.map((player: Player, index: number) => (
           <AddPlayerButton
             key={index}

@@ -21,7 +21,7 @@ const PlayerIcon = ({
   return (
     <div
       key={player.name}
-      className="flex flex-col items-center justify-center space-y-1 sm:w-3 cursor-pointer group h-auto w-14"
+      className="flex flex-col items-center justify-center space-y-1 sm:w-3 cursor-pointer group h-auto w-14 mx-1 my-1"
       onClick={handleClick}
     >
       <div
@@ -29,7 +29,7 @@ const PlayerIcon = ({
       >
         <p>{getPlayerResult(player)}</p>
       </div>
-      <p className={`${textLight} text-sm sm:text-md`}>
+      <p className={`${textLight} text-sm sm:text-md text-center`}>
         {player.customName || player.name}
       </p>
     </div>
@@ -54,7 +54,7 @@ export default function ListPlayers() {
   }, []);
   return (
     <>
-      <div className="flex space-x-4 justify-around mt-16 sm:flex-col sm:items-start sm:pl-14 sm:justify-evenly sm:space-x-0 sm:mt-10 sm:w-1/6 sm:h-2/3">
+      <div className="flex flex-wrap  mt-5 sm:mt-16 sm:flex-col items-start sm:pl-14 sm:justify-evenly sm:space-x-0 sm:w-1/6 sm:h-2/3">
         {game &&
           game.players.map((player, index) => (
             <PlayerIcon

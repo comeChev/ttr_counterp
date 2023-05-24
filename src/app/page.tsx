@@ -32,16 +32,18 @@ const Step = ({ text, index }: { text: string; index: number }) => {
 export default function Home() {
   return (
     <main className="p-4">
-      <h2 className="text-xl">
+      <h2 className="text-md sm:text-xl">
         Finir une partie de Ticket To Ride{" "}
-        <span className="italic text-base">
+        <span className="italic text-base mx-1 text-gray-400">
           (Les Aventuriers du Rail en français)
         </span>
-        est toujours compliqué. Les points sont compliqués et longs à compter.
+        est toujours compliqué. Les points sont complexes et longs à compter.
       </h2>
-      <p className="text-xl">
+      <p className="text-md sm:text-xl">
         {"Dorénavant, une solution simple s'offre à vous : "}
-        <span className={`font-bold ${lobster.className}`}>TCter</span>
+        <span className={`text-xl sm:text-md font-bold ${lobster.className}`}>
+          TCter
+        </span>
       </p>
 
       <div className="hidden sm:flex my-5">
@@ -52,11 +54,11 @@ export default function Home() {
         </ul>
       </div>
 
-      <p className="text-center text-4xl pt-5">
+      <p className="text-start sm:text-center text-4xl pt-5">
         <span className={`font-bold ${lobster.className}`}>TCter</span>{" "}
         {"s'occupe du reste !"}
       </p>
-      <div className="flex items-center justify-between mt-20">
+      <div className="flex items-center justify-between mt-4 sm:mt-20">
         <StartGameButton />
         <ResetButton />
       </div>
