@@ -62,7 +62,7 @@ export default function TicketsCounter({
           className={`text-[30px] cursor-pointer ${textIcon} `}
         />
 
-        <div className="flex-1 grid grid-cols-5 gap-3">
+        <div className="flex-1 flex flex-wrap">
           {currentPlayer.ticketConfig?.map((ticket, index) => (
             <p
               key={index}
@@ -70,7 +70,7 @@ export default function TicketsCounter({
                 ticket < 0
                   ? "bg-red-500 border-red-600 hover:bg-red-600"
                   : "bg-green-500 border-green-600 hover:bg-green-600"
-              } py-2 px-4 rounded-lg text-white cursor-pointer transition-all duration-200 border-2 text-center`}
+              } py-2 w-[50px] m-1 rounded-lg text-white cursor-pointer transition-all duration-200 border-2 text-center`}
               onClick={() => retireTicket(index)}
             >
               {String(ticket)}
