@@ -126,10 +126,10 @@ export default function NewGame() {
 
   function handleGame() {
     if (window.localStorage?.getItem("game")) {
-      setHasGame(true);
       const gameStringified = window.localStorage.getItem("game");
       const game: Game = gameStringified && JSON.parse(gameStringified);
       setGame(game);
+      setHasGame(true);
       const players = game.players;
       setGamePlayersDefault(
         defaultPlayers.filter((defaultPlayer) => {
@@ -141,7 +141,7 @@ export default function NewGame() {
 
   useEffect(() => {
     handleGame();
-  });
+  }, []);
 
   return (
     <div>
@@ -166,7 +166,6 @@ export default function NewGame() {
           />
         );
       })}
-      <div>{JSON.stringify(game)}</div>
     </div>
   );
 }

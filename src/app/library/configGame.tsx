@@ -44,6 +44,7 @@ const defaultBonusConfig: BonusConfig = {
   railwayStationPoints: 4,
   railwayStationRemaining: 4,
 };
+export const numberWagons: number = 45;
 
 const defaultBonusPoints = () => {
   let score: number = 0;
@@ -61,6 +62,7 @@ export const defaultPlayers: Player[] = [
     name: "Joueur rouge",
     mainColor: "red",
     wagonsPoints: 0,
+    remainingWagons: numberWagons,
     rideTicketPoints: 0,
     wagonsConfig: defaultWagonConfig,
     ticketConfig: [],
@@ -71,6 +73,7 @@ export const defaultPlayers: Player[] = [
     name: "Joueur bleu",
     mainColor: "blue",
     wagonsPoints: 0,
+    remainingWagons: numberWagons,
     rideTicketPoints: 0,
     wagonsConfig: defaultWagonConfig,
     ticketConfig: [],
@@ -81,6 +84,7 @@ export const defaultPlayers: Player[] = [
     name: "Joueur vert",
     mainColor: "green",
     wagonsPoints: 0,
+    remainingWagons: numberWagons,
     rideTicketPoints: 0,
     wagonsConfig: defaultWagonConfig,
     ticketConfig: [],
@@ -91,6 +95,7 @@ export const defaultPlayers: Player[] = [
     name: "Joueur jaune",
     mainColor: "yellow",
     wagonsPoints: 0,
+    remainingWagons: numberWagons,
     rideTicketPoints: 0,
     wagonsConfig: defaultWagonConfig,
     ticketConfig: [],
@@ -101,6 +106,7 @@ export const defaultPlayers: Player[] = [
     name: "Joueur noir",
     mainColor: "black",
     wagonsPoints: 0,
+    remainingWagons: numberWagons,
     rideTicketPoints: 0,
     wagonsConfig: defaultWagonConfig,
     ticketConfig: [],
@@ -119,8 +125,6 @@ export const wagonsPoints: PointValue[] = [
 
 export const routesPoints: number[] = [21, 20, 13, 12, 11, 10, 9, 8, 7, 6, 5];
 export const longestRoutePoint: number = +10;
-
-export const numberWagons: number = 45;
 
 export function handleAddPlayer(
   namePlayer: string,

@@ -7,6 +7,7 @@ export type Player = {
   customName?: string;
   name: PlayerName;
   mainColor: MainColor;
+  remainingWagons: number;
   wagonsConfig: WagonConfig[];
   wagonsPoints: number;
   ticketConfig: number[];

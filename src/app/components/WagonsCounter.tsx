@@ -5,13 +5,11 @@ import { currentPlayerState, gameState } from "../library/atom/gameState";
 import { getColorPlayer, numberWagons } from "../library/configGame";
 import { IoMdTrain } from "react-icons/io";
 import { Game, Player, WagonConfig } from "../library/types/Game.type";
-import { useState } from "react";
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai";
 
 export default function WagonsCounter() {
   const [currentPlayer, setCurrentPlayer] = useRecoilState(currentPlayerState);
   const [game, setGame] = useRecoilState(gameState);
-  const [totalWagons, setTotalWagons] = useState(0);
   const { backgroundLight, borderColor, textIcon } = getColorPlayer(
     currentPlayer?.mainColor
   );
@@ -28,6 +26,7 @@ export default function WagonsCounter() {
     };
     const updatedPlayer: Player = {
       ...currentPlayer,
+      remainingWagons: currentPlayer.remainingWagons + wagons,
       wagonsPoints: currentPlayer.wagonsPoints - value,
       wagonsConfig: currentPlayer.wagonsConfig.map((wagonConfig, index) => {
         if (index === wagonConfigIndex) {
@@ -44,7 +43,6 @@ export default function WagonsCounter() {
     };
     setGame(updatedGame);
     setCurrentPlayer(updatedPlayer);
-    setTotalWagons((t) => t - Number(wagons));
     window.localStorage.setItem("game", JSON.stringify(updatedGame));
   }
 
@@ -56,7 +54,11 @@ export default function WagonsCounter() {
     };
     const updatedPlayer: Player = {
       ...currentPlayer,
+      //retire wagons from remainingWagons
+      remainingWagons: currentPlayer.remainingWagons - wagons,
+      //add points to wagonsPoints
       wagonsPoints: currentPlayer.wagonsPoints + value,
+      //update wagonsConfig of currentPlayer
       wagonsConfig: currentPlayer.wagonsConfig.map((wagonConfig, index) => {
         if (index === wagonConfigIndex) {
           return updatedWagonConfig;
@@ -64,7 +66,6 @@ export default function WagonsCounter() {
         return wagonConfig;
       }),
     };
-
     const updatedGame: Game = {
       ...game,
       players: game.players.map((player) =>
@@ -73,7 +74,6 @@ export default function WagonsCounter() {
     };
     setGame(updatedGame);
     setCurrentPlayer(updatedPlayer);
-    setTotalWagons((t) => t + wagons);
     window.localStorage.setItem("game", JSON.stringify(updatedGame));
   }
 
@@ -88,6 +88,7 @@ export default function WagonsCounter() {
           {currentPlayer?.wagonsConfig?.map((wagonConfig, index) => (
             <div className="flex items-center space-x-2 mb-3" key={index}>
               <span className={``}>{wagonConfig.numberWagons}</span>
+              {/* Array of wagons icons depending on number wagons defined */}
               <div className="flex flex-1">
                 {Array.from(
                   Array(wagonConfig.numberWagons),
@@ -96,7 +97,9 @@ export default function WagonsCounter() {
                   }
                 )}
               </div>
+
               <div className="flex items-center space-x-3">
+                {/* retire button */}
                 <button
                   onClick={() =>
                     retireScore(
@@ -110,13 +113,17 @@ export default function WagonsCounter() {
                 >
                   <AiOutlineMinusCircle className={`${textIcon} text-[30px]`} />
                 </button>
+
+                {/* number routes made with this type of train */}
                 <span className="w-5 text-center">
                   {wagonConfig.numberWagonMade}
                 </span>
+
+                {/* add button */}
                 <button
                   className="disabled:opacity-50"
                   disabled={
-                    totalWagons + wagonConfig.numberWagons > numberWagons
+                    currentPlayer.remainingWagons - wagonConfig.numberWagons < 0
                   }
                   onClick={() =>
                     addScore(
@@ -135,7 +142,7 @@ export default function WagonsCounter() {
         {/* ticketsCounter */}
         {/* bonusCounter */}
         {/* Total wagons */}
-        <p>{`Wagons restants : ${numberWagons - totalWagons}`}</p>
+        <p>{`Wagons restants : ${currentPlayer.remainingWagons}`}</p>
       </div>
     </div>
   );
