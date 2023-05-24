@@ -108,7 +108,7 @@ export default function WagonsCounter() {
                   disabled={wagonConfig.numberWagonMade === 0}
                   className="disabled:opacity-50"
                 >
-                  <AiOutlineMinusCircle />
+                  <AiOutlineMinusCircle className={`${textIcon} text-[30px]`} />
                 </button>
                 <span className="w-5 text-center">
                   {wagonConfig.numberWagonMade}

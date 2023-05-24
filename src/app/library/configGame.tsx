@@ -38,12 +38,24 @@ const defaultWagonConfig: WagonConfig[] = [
     numberWagonMade: 0,
   },
 ];
-export const defaultBonusConfig: BonusConfig = {
+const defaultBonusConfig: BonusConfig = {
   hasLongestRoute: false,
   longestRoutePoints: 10,
   railwayStationPoints: 4,
   railwayStationRemaining: 4,
 };
+
+const defaultBonusPoints = () => {
+  let score: number = 0;
+  defaultBonusConfig.hasLongestRoute &&
+    (score += defaultBonusConfig.longestRoutePoints);
+  defaultBonusConfig.railwayStationRemaining > 0 &&
+    (score +=
+      defaultBonusConfig.railwayStationRemaining *
+      defaultBonusConfig.railwayStationPoints);
+  return score;
+};
+
 export const defaultPlayers: Player[] = [
   {
     name: "Joueur rouge",
@@ -53,7 +65,7 @@ export const defaultPlayers: Player[] = [
     wagonsConfig: defaultWagonConfig,
     ticketConfig: [],
     bonusConfig: defaultBonusConfig,
-    bonusPoints: 0,
+    bonusPoints: defaultBonusPoints(),
   },
   {
     name: "Joueur bleu",
@@ -63,7 +75,7 @@ export const defaultPlayers: Player[] = [
     wagonsConfig: defaultWagonConfig,
     ticketConfig: [],
     bonusConfig: defaultBonusConfig,
-    bonusPoints: 0,
+    bonusPoints: defaultBonusPoints(),
   },
   {
     name: "Joueur vert",
@@ -73,7 +85,7 @@ export const defaultPlayers: Player[] = [
     wagonsConfig: defaultWagonConfig,
     ticketConfig: [],
     bonusConfig: defaultBonusConfig,
-    bonusPoints: 0,
+    bonusPoints: defaultBonusPoints(),
   },
   {
     name: "Joueur jaune",
@@ -83,7 +95,7 @@ export const defaultPlayers: Player[] = [
     wagonsConfig: defaultWagonConfig,
     ticketConfig: [],
     bonusConfig: defaultBonusConfig,
-    bonusPoints: 0,
+    bonusPoints: defaultBonusPoints(),
   },
   {
     name: "Joueur noir",
@@ -93,10 +105,9 @@ export const defaultPlayers: Player[] = [
     wagonsConfig: defaultWagonConfig,
     ticketConfig: [],
     bonusConfig: defaultBonusConfig,
-    bonusPoints: 0,
+    bonusPoints: defaultBonusPoints(),
   },
 ];
-
 export const wagonsPoints: PointValue[] = [
   { routeWagons: 1, routePoints: 1 },
   { routeWagons: 2, routePoints: 2 },
@@ -107,7 +118,7 @@ export const wagonsPoints: PointValue[] = [
 ];
 
 export const routesPoints: number[] = [21, 20, 13, 12, 11, 10, 9, 8, 7, 6, 5];
-export const longestRoutePoint: number = 10;
+export const longestRoutePoint: number = +10;
 
 export const numberWagons: number = 45;
 
@@ -254,4 +265,17 @@ export function calculateTicketPoint(tickets: number[]) {
     ticketPoints += ticket;
   });
   return ticketPoints;
+}
+
+export function calculateBonusPointsRailwayStation(
+  playerBonusConfig: Player["bonusConfig"]
+) {
+  let score = 0;
+  if (playerBonusConfig.railwayStationRemaining > 0) {
+    let railwayStationScore =
+      playerBonusConfig.railwayStationRemaining *
+      playerBonusConfig.railwayStationPoints;
+    score += railwayStationScore;
+  }
+  return score;
 }
