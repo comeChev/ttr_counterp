@@ -20,7 +20,7 @@ export default function ModalTicketPoints({
   const [currentPlayer, setCurrentPlayer] = useRecoilState(currentPlayerState);
   const [game, setGame] = useRecoilState(gameState);
 
-  const { textIcon, backgroundLight, borderColor } = getColorPlayer(
+  const { backgroundLight, borderColor, backgroundExtraLight } = getColorPlayer(
     currentPlayer?.mainColor
   );
 
@@ -71,13 +71,13 @@ export default function ModalTicketPoints({
       initial={{ opacity: 0, top: -20 }}
       animate={{ opacity: 1, top: 10 }}
       exit={{ opacity: 0, top: -20 }}
-      className={`fixed  top-4 ${backgroundLight} text-neutral-700 border-2 ${borderColor} p-4 rounded-lg w-[85%] left-1/2 transform -translate-x-1/2 flex flex-col items-center justify-center px-10`}
+      className={`fixed  top-4 ${backgroundExtraLight} text-neutral-700 border-2 ${borderColor} p-4 rounded-lg w-[85%] left-1/2 transform -translate-x-1/2 flex flex-col items-center justify-center px-10`}
     >
-      <div className="grid grid-cols-5 w-full sm:w-3/4">
+      <div className="flex flex-wrap w-full sm:w-3/4">
         {routesPoints.map((routePoint, index) => (
           <button
             key={index}
-            className="bg-white border-2 border-gray-400 m-2 focus:bg-gray-500 focus:text-white px-4 py-2 sm:px-8 sm:py-4 rounded-md"
+            className="bg-white border-2 border-gray-400 m-2 focus:bg-gray-500 focus:text-white w-[60px] h-[40px] sm:w-[120px] sm:h-[60px] rounded-md"
             onClick={() => setValue(routePoint)}
           >
             {routePoint}

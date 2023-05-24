@@ -51,19 +51,6 @@ export default function Header({ mainFont }: { mainFont: string }) {
           </h1>
         </div>
       </div>
-      {pathname !== "/" && (
-        <Link
-          href="/"
-          className="text-lg font-light text-neutral-600 mt-10"
-          onClick={() => {
-            window.localStorage.removeItem("game");
-            setGame(defaultGame);
-            setGamePlayersDefault(defaultPlayers);
-          }}
-        >
-          Recommencer une partie
-        </Link>
-      )}
     </header>
   );
 }

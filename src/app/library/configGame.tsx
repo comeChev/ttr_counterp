@@ -183,6 +183,7 @@ export function getColorPlayer(mainColor: Player["mainColor"]) {
     textLight: "text-gray-500",
     borderColor: "border-gray-500",
     textIcon: "text-gray-500",
+    backgroundExtraLight: "bg-gray-100",
   };
 
   switch (mainColor) {
@@ -194,6 +195,7 @@ export function getColorPlayer(mainColor: Player["mainColor"]) {
         ringSolid: "ring-red-500",
         borderColor: "border-red-500",
         textIcon: "text-red-500",
+        backgroundExtraLight: "bg-red-100",
       };
       break;
     case "blue":
@@ -204,6 +206,7 @@ export function getColorPlayer(mainColor: Player["mainColor"]) {
         ringSolid: "ring-blue-500",
         borderColor: "border-blue-500",
         textIcon: "text-blue-500",
+        backgroundExtraLight: "bg-blue-100",
       };
       break;
     case "green":
@@ -214,6 +217,7 @@ export function getColorPlayer(mainColor: Player["mainColor"]) {
         ringSolid: "ring-green-500",
         borderColor: "border-green-500",
         textIcon: "text-green-500",
+        backgroundExtraLight: "bg-green-100",
       };
       break;
     case "yellow":
@@ -224,6 +228,7 @@ export function getColorPlayer(mainColor: Player["mainColor"]) {
         ringSolid: "ring-yellow-500",
         borderColor: "border-yellow-700",
         textIcon: "text-amber-500",
+        backgroundExtraLight: "bg-amber-100",
       };
       break;
     case "black":
