@@ -14,7 +14,7 @@ const stepSentences = [
 
 const Step = ({ text, index }: { text: string; index: number }) => {
   return (
-    <li className="flex items-center justify-start">
+    <li className="flex items-center justify-start w-[200px]">
       <div className="flex items-center text-sm my-2 h-20 bg-neutral-200 px-4 py-2 rounded-xl w-full">
         <div
           className={`rounded-full h-8 w-8 flex items-center justify-center `}
@@ -47,7 +47,7 @@ export default function Home() {
       </p>
 
       <div className="hidden sm:flex my-5">
-        <ul className="sm:flex sm:space-x-2 text-sm">
+        <ul className="flex flex-wrap space-x-2 text-sm">
           {stepSentences.map((sentence, index) => (
             <Step key={index} text={sentence} index={index} />
           ))}

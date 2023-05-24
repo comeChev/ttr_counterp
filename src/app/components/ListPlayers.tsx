@@ -68,7 +68,17 @@ export default function ListPlayers() {
   }, []);
   return (
     <>
-      <div className="flex flex-wrap  mt-5 sm:mt-16 sm:flex-col items-center sm:justify-evenly sm:space-x-0 sm:w-1/6 w-full h-full sticky top-0 bg-white z-30">
+      <div
+        className="
+      flex flex-wrap 
+      mt-5 
+      items-center 
+      w-full h-full 
+      sticky top-0 z-30
+      bg-white 
+      sm:mt-16 sm:flex-col sm:justify-evenly sm:sticky sm:top-0 sm:overflow-auto sm:self-start
+      "
+      >
         {game &&
           game.players.map((player, index) => (
             <PlayerIcon
