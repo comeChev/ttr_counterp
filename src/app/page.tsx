@@ -12,26 +12,18 @@ const stepSentences = [
   "Définissez les bonus",
 ];
 
-const Step = ({
-  text,
-
-  index,
-}: {
-  text: string;
-
-  index: number;
-}) => {
+const Step = ({ text, index }: { text: string; index: number }) => {
   return (
     <li className="flex items-center justify-start">
-      <div className="flex items-center text-lg my-2 h-16 bg-neutral-200 px-4 rounded-xl w-full sm:">
+      <div className="flex items-center text-sm my-2 h-20 bg-neutral-200 px-4 py-2 rounded-xl w-full">
         <div
           className={`rounded-full h-8 w-8 flex items-center justify-center `}
         >
-          <div className="h-7 w-7 rounded-full bg-neutral-300 text-gray-700 flex items-center justify-center text-sm shadow-sm">
+          <div className="h-7 w-7 rounded-full bg-neutral-300 text-gray-700 flex items-center justify-center text-xs shadow-sm">
             {index + 1}
           </div>
         </div>
-        <p className="ml-4 text-sm sm:text-md">{text}</p>
+        <p className="ml-2 text-sm sm:text-sm">{text}</p>
       </div>
     </li>
   );
@@ -41,20 +33,25 @@ export default function Home() {
   return (
     <main className="p-4">
       <h2 className="text-xl">
-        Finir une partie de Ticket To Ride (Les Aventuriers du Rail en français)
+        Finir une partie de Ticket To Ride{" "}
+        <span className="italic text-base">
+          (Les Aventuriers du Rail en français)
+        </span>
         est toujours compliqué. Les points sont compliqués et longs à compter.
       </h2>
       <p className="text-xl">
         Dorénavant, une solution simple s'offre à vous :{" "}
         <span className={`font-bold ${lobster.className}`}>TCter</span>
       </p>
-      <div className="my-5 text-lg sm:mx-20">
-        <ul className="">
+
+      <div className="hidden sm:flex my-5">
+        <ul className="sm:flex sm:space-x-2 text-sm">
           {stepSentences.map((sentence, index) => (
             <Step key={index} text={sentence} index={index} />
           ))}
         </ul>
       </div>
+
       <p className="text-center text-4xl pt-5">
         <span className={`font-bold ${lobster.className}`}>TCter</span> s'occupe
         du reste !

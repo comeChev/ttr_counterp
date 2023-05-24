@@ -28,7 +28,7 @@ export default function StartGameButton() {
 
   return game.players.length > 1 && isSameGame ? (
     <Link
-      href="/game"
+      href={`${game.id}/game`}
       className="px-3 py-2.5 text-blue-500 group-disabled:text-gray-300"
       onClick={() => handleStartGame(game)}
     >

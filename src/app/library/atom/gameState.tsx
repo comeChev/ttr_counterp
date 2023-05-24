@@ -2,7 +2,7 @@ import { atom } from "recoil";
 import { Game, Player } from "../types/Game.type";
 import { defaultPlayers } from "../configGame";
 
-const defaultGame: Game = {
+export const defaultGame: Game = {
   id: 1,
   players: [] as Player[],
 };

@@ -55,7 +55,6 @@ const PlayerWindow = ({
     </div>
   );
 };
-
 const AddPlayerButton = ({
   name,
   mainColor,
@@ -125,7 +124,7 @@ export default function NewGame() {
   };
 
   useEffect(() => {
-    if (window.localStorage.getItem("game")) {
+    if (window.localStorage?.getItem("game")) {
       const game: Game = JSON.parse(window.localStorage.getItem("game"));
       setGame(game);
       const players = game.players;

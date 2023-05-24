@@ -13,7 +13,7 @@ import BonusCounter from "./BonusCounter";
 export default function PlayerPagePoints() {
   const [currentPlayer, setCurrentPlayer] = useRecoilState(currentPlayerState);
   const [game, setGame] = useRecoilState(gameState);
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
