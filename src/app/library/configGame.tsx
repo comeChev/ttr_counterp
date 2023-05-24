@@ -1,4 +1,10 @@
-import { Game, Player, PointValue, WagonConfig } from "./types/Game.type";
+import {
+  BonusConfig,
+  Game,
+  Player,
+  PointValue,
+  WagonConfig,
+} from "./types/Game.type";
 
 const defaultWagonConfig: WagonConfig[] = [
   {
@@ -32,52 +38,62 @@ const defaultWagonConfig: WagonConfig[] = [
     numberWagonMade: 0,
   },
 ];
-
+export const defaultBonusConfig: BonusConfig = {
+  hasLongestRoute: false,
+  longestRoutePoints: 10,
+  railwayStationPoints: 4,
+  railwayStationRemaining: 4,
+};
 export const defaultPlayers: Player[] = [
   {
     name: "Joueur rouge",
     mainColor: "red",
     wagonsPoints: 0,
     rideTicketPoints: 0,
-    longestRoutePoints: 0,
     wagonsConfig: defaultWagonConfig,
     ticketConfig: [],
+    bonusConfig: defaultBonusConfig,
+    bonusPoints: 0,
   },
   {
     name: "Joueur bleu",
     mainColor: "blue",
     wagonsPoints: 0,
     rideTicketPoints: 0,
-    longestRoutePoints: 0,
     wagonsConfig: defaultWagonConfig,
     ticketConfig: [],
+    bonusConfig: defaultBonusConfig,
+    bonusPoints: 0,
   },
   {
     name: "Joueur vert",
     mainColor: "green",
     wagonsPoints: 0,
     rideTicketPoints: 0,
-    longestRoutePoints: 0,
     wagonsConfig: defaultWagonConfig,
     ticketConfig: [],
+    bonusConfig: defaultBonusConfig,
+    bonusPoints: 0,
   },
   {
     name: "Joueur jaune",
     mainColor: "yellow",
     wagonsPoints: 0,
     rideTicketPoints: 0,
-    longestRoutePoints: 0,
     wagonsConfig: defaultWagonConfig,
     ticketConfig: [],
+    bonusConfig: defaultBonusConfig,
+    bonusPoints: 0,
   },
   {
     name: "Joueur noir",
     mainColor: "black",
     wagonsPoints: 0,
     rideTicketPoints: 0,
-    longestRoutePoints: 0,
     wagonsConfig: defaultWagonConfig,
     ticketConfig: [],
+    bonusConfig: defaultBonusConfig,
+    bonusPoints: 0,
   },
 ];
 
@@ -92,6 +108,7 @@ export const wagonsPoints: PointValue[] = [
 
 export const routesPoints: number[] = [21, 20, 13, 12, 11, 10, 9, 8, 7, 6, 5];
 export const longestRoutePoint: number = 10;
+
 export const numberWagons: number = 45;
 
 export function handleAddPlayer(
@@ -208,7 +225,7 @@ export function getColorPlayer(mainColor: Player["mainColor"]) {
 
 export function getPlayerResult(player: Player) {
   return Number(
-    player.wagonsPoints + player.rideTicketPoints + player.longestRoutePoints
+    player.wagonsPoints + player.rideTicketPoints + player.bonusPoints
   );
 }
 

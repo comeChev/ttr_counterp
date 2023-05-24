@@ -46,7 +46,7 @@ export default function PlayerPagePoints() {
 
         <div className="text-neutral-700">
           <h2 className="text-xl font-semibold">Points des bonus</h2>
-          <h3>Score courant : {currentPlayer.rideTicketPoints}</h3>
+          <h3>Score courant : {currentPlayer.bonusPoints}</h3>
           <div
             className={`${backgroundLight} p-4 border-2 ${borderColor} rounded-lg`}
           ></div>

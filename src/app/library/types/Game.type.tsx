@@ -7,17 +7,25 @@ export type Player = {
   customName?: string;
   name: PlayerName;
   mainColor: MainColor;
-  wagonsPoints: number;
-  rideTicketPoints: number;
-  longestRoutePoints: number;
   wagonsConfig: WagonConfig[];
+  wagonsPoints: number;
   ticketConfig: number[];
+  rideTicketPoints: number;
+  bonusConfig: BonusConfig;
+  bonusPoints: number;
 };
 
 export type WagonConfig = {
   numberWagons: number;
   pointsWagon: number;
   numberWagonMade: number;
+};
+
+export type BonusConfig = {
+  hasLongestRoute: boolean;
+  longestRoutePoints: number;
+  railwayStationPoints: number;
+  railwayStationRemaining: number;
 };
 
 type PlayerName =
