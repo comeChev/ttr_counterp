@@ -44,8 +44,8 @@ export default function Header({ mainFont }: { mainFont: string }) {
       )}
       <div className="text-end ">
         <h1 className={`font-bold text-2xl px-4 ${mainFont}`}>
-          <span className={mainFont}>TCter</span>, compter vos points n'est plus
-          un problème !
+          <span className={mainFont}>TCter</span>{" "}
+          {"compter vos points n'est plus un problème !"}
         </h1>
         {pathname !== "/" && (
           <Link

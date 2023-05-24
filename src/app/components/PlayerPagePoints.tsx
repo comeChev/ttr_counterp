@@ -16,13 +16,17 @@ export default function PlayerPagePoints() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const router = useRouter();
 
-  useEffect(() => {
+  function handleGame() {
     if (!getLocalStorageGame()) {
       router.push("/");
     }
     !game && setGame(getLocalStorageGame() as Game);
     !currentPlayer &&
       setCurrentPlayer(getLocalStorageGame()?.players[0] as Player);
+  }
+
+  useEffect(() => {
+    handleGame();
   }, []);
 
   return currentPlayer !== null ? (

@@ -40,17 +40,17 @@ export default function ListPlayers() {
   const [game, setGame] = useRecoilState(gameState);
   const [currentPlayer, setCurrentPlayer] = useRecoilState(currentPlayerState);
 
-  useEffect(() => {
+  function handleStorage() {
     if (window.localStorage.getItem("game")) {
       const gameKey = window.localStorage.getItem("game");
       const localGame: Game = JSON.parse(gameKey as string);
-
       setGame(localGame);
-
       setCurrentPlayer(localGame.players[0]);
     }
-  }, []);
+  }
 
+  useEffect(() => {}, []);
+  handleStorage();
   return (
     <>
       <div className="flex space-x-4 justify-around mt-16 sm:flex-col sm:items-start sm:pl-14 sm:justify-evenly sm:space-x-0 sm:mt-10 sm:w-1/6 sm:h-2/3">

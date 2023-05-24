@@ -124,7 +124,7 @@ export default function NewGame() {
       );
   };
 
-  useEffect(() => {
+  function handleGame() {
     if (window.localStorage?.getItem("game")) {
       setHasGame(true);
       const gameStringified = window.localStorage.getItem("game");
@@ -137,7 +137,10 @@ export default function NewGame() {
         })
       );
     }
-    return;
+  }
+
+  useEffect(() => {
+    handleGame();
   }, []);
 
   return (
