@@ -1,38 +1,20 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useLayoutEffect } from "react";
+import debounce from "lodash/debounce";
 
-export default function useIsMobile() {
-  const hasWindow = typeof window;
+export default function useIsMobile(): boolean {
+  const [isMobile, setIsMobile] = useState(false);
 
-  function getWindowDimensions() {
-    const width = hasWindow ? window.innerWidth : null;
-    const height = hasWindow ? window.innerHeight : null;
-    return {
-      width,
-      height,
+  useLayoutEffect(() => {
+    const updateSize = (): void => {
+      setIsMobile(window.innerWidth < 768);
     };
-  }
+    window.addEventListener("resize", debounce(updateSize, 100));
 
-  const [windowDimensions, setWindowDimensions] = useState(
-    getWindowDimensions()
-  );
-  function handleResize() {
-    setWindowDimensions(getWindowDimensions());
-  }
+    return (): void => {
+      window.removeEventListener("resize", updateSize);
+    };
+  }, []);
 
-  useEffect(() => {
-    if (hasWindow) {
-      handleResize();
-      window.addEventListener("resize", handleResize);
-      return () => window.removeEventListener("resize", handleResize);
-    }
-  }, [hasWindow]);
-
-  const isMobile = () => {
-    if (windowDimensions.width) {
-      return windowDimensions.width < 768;
-    }
-    return false;
-  };
-  return isMobile();
+  return isMobile;
 }
