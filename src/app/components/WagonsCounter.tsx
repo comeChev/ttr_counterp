@@ -86,7 +86,7 @@ export default function WagonsCounter() {
       >
         <div className="text-2xl">
           {currentPlayer?.wagonsConfig?.map((wagonConfig, index) => (
-            <div className="flex items-center space-x-2 mb-3">
+            <div className="flex items-center space-x-2 mb-3" key={index}>
               <span className={``}>{wagonConfig.numberWagons}</span>
               <div className="flex flex-1">
                 {Array.from(

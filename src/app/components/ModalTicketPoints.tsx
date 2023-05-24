@@ -74,8 +74,9 @@ export default function ModalTicketPoints({
       className={`fixed  top-4 ${backgroundLight} text-neutral-700 border-2 ${borderColor} p-4 rounded-lg w-[85%] left-1/2 transform -translate-x-1/2 flex flex-col items-center justify-center px-10`}
     >
       <div className="grid grid-cols-5 w-full sm:w-3/4">
-        {routesPoints.map((routePoint) => (
+        {routesPoints.map((routePoint, index) => (
           <button
+            key={index}
             className="bg-white border-2 border-gray-400 m-2 focus:bg-gray-500 focus:text-white px-4 py-2 sm:px-8 sm:py-4 rounded-md"
             onClick={() => setValue(routePoint)}
           >

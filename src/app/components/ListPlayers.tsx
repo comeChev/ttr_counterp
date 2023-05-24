@@ -55,8 +55,9 @@ export default function ListPlayers() {
     <>
       <div className="flex space-x-4 justify-around mt-16 sm:flex-col sm:items-start sm:pl-14 sm:justify-evenly sm:space-x-0 sm:mt-10 sm:w-1/6 sm:h-2/3">
         {game &&
-          game.players.map((player) => (
+          game.players.map((player, index) => (
             <PlayerIcon
+              key={index}
               player={player}
               handleClick={() => setCurrentPlayer(player)}
             />

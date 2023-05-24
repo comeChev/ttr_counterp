@@ -10,7 +10,7 @@ import {
   handleAddPlayer,
   handleDeletePlayer,
 } from "../library/configGame";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const PlayerWindow = ({
   player,
@@ -102,6 +102,7 @@ export default function NewGame() {
   //default players
   const [gamePlayersDefault, setGamePlayersDefault] =
     useRecoilState(playersState);
+  const [hasGame, setHasGame] = useState(false);
 
   const handleDelete = (namePlayer: string) => {
     handleDeletePlayer(
@@ -125,6 +126,7 @@ export default function NewGame() {
 
   useEffect(() => {
     if (window.localStorage?.getItem("game")) {
+      setHasGame(true);
       const gameStringified = window.localStorage.getItem("game");
       const game: Game = gameStringified && JSON.parse(gameStringified);
       setGame(game);
@@ -141,9 +143,10 @@ export default function NewGame() {
   return (
     <div>
       <div className="flex space-x-3 my-4">
-        {gamePlayersDefault.map((player: Player) => (
+        {gamePlayersDefault.map((player: Player, index: number) => (
           <AddPlayerButton
-            disabled={window.localStorage.getItem("game") ? true : false}
+            key={index}
+            disabled={hasGame}
             name={player.name}
             mainColor={player.mainColor}
             handleAdd={() => handleAdd(player.name)}

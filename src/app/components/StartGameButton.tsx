@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRecoilState } from "recoil";
 import { currentPlayerState, gameState } from "../library/atom/gameState";
 import { Game } from "../library/types/Game.type";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function StartGameButton() {
   const [game, setGame] = useRecoilState(gameState);
@@ -25,6 +25,11 @@ export default function StartGameButton() {
     window.localStorage.setItem("game", JSON.stringify(game));
     setCurrentPlayer(game.players[0]);
   };
+  const [hasGame, setHasGame] = useState(false);
+
+  useEffect(() => {
+    window.localStorage.getItem("game") && setHasGame(true);
+  }, []);
 
   return game.players.length > 1 && isSameGame ? (
     <Link
@@ -38,9 +43,7 @@ export default function StartGameButton() {
     </Link>
   ) : (
     <button disabled className="px-3 py-2.5 disabled:text-gray-300">
-      {window.localStorage.getItem("game")
-        ? "Continuer la partie"
-        : "Commencer une nouvelle partie"}
+      {hasGame ? "Continuer la partie" : "Commencer une nouvelle partie"}
     </button>
   );
 }
