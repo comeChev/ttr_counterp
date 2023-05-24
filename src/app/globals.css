@@ -30,8 +30,3 @@
     transform: rotate(0deg);
   }
 }
-
-.checkbox:checked + .label .button {
-  left: calc(100% - 2px);
-  transform: translateX(-100%);
-}
