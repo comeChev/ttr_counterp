@@ -141,7 +141,7 @@ export default function NewGame() {
 
   useEffect(() => {
     handleGame();
-  }, []);
+  });
 
   return (
     <div>

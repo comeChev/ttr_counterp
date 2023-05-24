@@ -27,7 +27,7 @@ export default function PlayerPagePoints() {
 
   useEffect(() => {
     handleGame();
-  }, []);
+  });
 
   return currentPlayer !== null ? (
     <>
